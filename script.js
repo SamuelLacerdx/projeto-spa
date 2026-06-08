@@ -77,7 +77,7 @@ function iniciarNavegacao() {
 // IMC 
 
 function calcularImc() {
-  const altura = parseFloat(elemento.inputAltura.value);
+  let altura = parseFloat(elemento.inputAltura.value);
   const peso = parseFloat(elemento.inputPeso.value);
   const genero = document.querySelector(".genero:checked").value;
 
@@ -85,6 +85,11 @@ function calcularImc() {
     elemento.resultadoImc.textContent = "Preencha os campos corretamente.";
     elemento.resultadoTipo.textContent = "";
     return;
+  }
+
+  // Converte automaticamente se o usuario colocar altura sem ponto (1.75 / 175)
+  if (altura > 3) {
+    altura = altura / 100;
   }
 
   const imc = peso / (altura * altura);
