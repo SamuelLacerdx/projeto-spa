@@ -1,85 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Canivete Suiço</title>
-      
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="./style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>S.P.A - Canivete Suiço</h1>
+      <h1>S.P.A - Canivete Suiço</h1>
     </header>
     <div id="wrapper">
-        <aside id="pai-buttons">
-            <a class="btn" href="#cotacao-moedas" id="cotacao">Cotação</a>
-            <a class="btn" href="#calculo-imc" id="Imc">Calcular IMC</a>
-            <a class="btn" href="#conversor-tempo" id="temperatura">Conversor temp</a>
-            <a class="btn" href="#conversor-velocidade" id="velocidade">Conversor vel</a>
-            <a class="btn" href="#coversor-massa" id="massa">Conversor massa</a>
-            <a class="btn" href="#calculo-tres" id="multiplicação">Regra de três</a>
-        </aside>
-        <main>
-            <!-- Card de boas-vindas padrão -->
-            <div class="ativo" id="bem-vindo">
-                <h1>Bem-Vindo</h1>
-                <p>Selecione uma opção no menu lateral.</p>
+      <aside id="pai-buttons">
+        <a class="btn" href="#cotacao-moedas" id="cotacao">Cotação</a>
+        <a class="btn" href="#calculo-imc" id="Imc">Calcular IMC</a>
+        <a class="btn" href="#conversor-tempo" id="temperatura">Conversor temp</a>
+        <a class="btn" href="#conversor-velocidade" id="velocidade">Conversor vel</a>
+        <a class="btn" href="#coversor-massa" id="massa">Conversor massa</a>
+        <a class="btn" href="#calculo-tres" id="tres">Regra de três</a>
+      </aside>
+      <main>
+        <!-- Card de boas-vindas padrão -->
+        <div class="msg-inicio">
+          <h1>Bem-Vindo</h1>
+          <p>Selecione uma opção no menu lateral.</p>
+        </div>
+
+        <section class="card escondido" id="cotacao-moedas">
+          <h1>Cotação de Moedas</h1>
+        </section>
+        <section class="card escondido" id="calculo-imc">
+          <h1>Calcular IMC</h1>
+          <form action="" id="form">
+            <div class="genero-grupo">
+              <div class="genero-opcao">
+                <input class="genero" type="radio" id="masculino" value="masculino" name="genero" checked />
+                <label for="masculino">Masculino</label>
+              </div>
+              <div class="genero-opcao">
+                <input class="genero" type="radio" id="feminino" value="feminino" name="genero" />
+                <label for="feminino">Feminino</label>
+              </div>
             </div>
 
-            <section hidden class="card" id="cotacao-moedas">
-                <h1>Cotação de Moedas</h1>
-            </section>
-            <section hidden class="card" id="calculo-imc">
-                <h1>Calcular IMC</h1>
-                <form action="" id="form">
-                    <div class="genero-grupo">
-                        <div class="genero-opcao">
-                            <input class="genero" type="radio" id="masculino" value="masculino" name="genero" checked>
-                            <label for="masculino">Masculino</label>
-                        </div>
-                        <div class="genero-opcao">
-                            <input class="genero" type="radio" id="feminino" value="feminino" name="genero">
-                            <label for="feminino">Feminino</label>
-                        </div>
-                    </div>
+            <label for="altura">Altura (m)</label>
+            <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01" />
 
-                    <label for="altura">Altura (m)</label>
-                    <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01">
+            <label for="peso">Peso (kg)</label>
+            <input type="number" id="peso" placeholder="Ex: 70" />
 
-                    <label for="peso">Peso (kg)</label>
-                    <input type="number" id="peso" placeholder="Ex: 70">
-
-                    <button id="buttonIMC" type="button">Calcular</button>
-                </form>
-                <div class="resultado">
-                    <p id="imc"></p>
-                    <p id="tipoImc"></p>
-                </div>
-            </section>
-            <section hidden class="card" id="conversor-tempo">
-                <h1>Conversor de Temperatura</h1>
-            </section>
-            <section hidden class="card" id="conversor-velocidade">
-                <h1>Conversor de Velocidade</h1>
-            </section>
-            <section hidden class="card" id="conversor-massa">
-                <h1>Conversor de Massa</h1>
-            </section>
-            <section hidden class="card" id="calculo-tres">
-                <h1>Regra de Três</h1>
-            </section>
-        </main>
+            <button id="buttonIMC" type="button">Calcular</button>
+          </form>
+          <div class="resultado">
+            <p id="imc"></p>
+            <p id="tipoImc"></p>
+          </div>
+        </section>
+        <section class="card escondido" id="conversor-temperatura">
+          <h1>Conversor de Temperatura</h1>
+        </section>
+        <section class="card escondido" id="conversor-velocidade">
+          <h1>Conversor de Velocidade</h1>
+        </section>
+        <section class="card escondido" id="conversor-massa">
+          <h1>Conversor de Massa</h1>
+        </section>
+        <section class="card escondido" id="calculo-tres">
+          <h1>Regra de Três</h1>
+        </section>
+      </main>
     </div>
     <footer>
-        <p>E-mail: contato@spa.com</p>
-        <p>E-mail: suporte@spa.com</p>
-        <p>E-mail: admin@spa.com</p>
+      <p>E-mail: contato@spa.com</p>
+      <p>E-mail: suporte@spa.com</p>
+      <p>E-mail: admin@spa.com</p>
     </footer>
-</body>
+  </body>
 </html>
