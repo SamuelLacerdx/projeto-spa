@@ -101,7 +101,7 @@ footer p {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Botões da sidebar */
+/* ── Botões da sidebar ── */
 .btn {
   text-decoration: none;
   width: 100%;
@@ -114,9 +114,7 @@ footer p {
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    transform 0.1s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease;
   display: block;
 }
 
@@ -128,24 +126,140 @@ footer p {
   transform: scale(0.97);
 }
 
-.btn-msg-inicio {
-  background-color: #1a1aff;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
 .btn:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(43, 47, 212, 0.3);
 }
 
-/* Cards — visibilidade controlada pelo atributo hidden via JS */
-
+/* ── Card base ── */
 .card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  width: 400px;
+  border: none;
+  background-color: var(--fundo-cards);
+  border-radius: 14px;
+  padding: 32px 36px;
+  color: var(--texto-secundario);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.12),
+    0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
+.card h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--texto-titulo-card);
+  text-align: center;
+  border-bottom: 1px solid var(--borda-divisoria);
+  padding-bottom: 14px;
+}
+
+/* ── Formulários dentro dos cards ── */
+.card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.card input[type="number"],
+.card input[type="text"] {
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #ddd;
+  background-color: #fafafa;
+  color: #333;
+  font-family: var(--fonte-principal);
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.card input[type="number"]:focus,
+.card input[type="text"]:focus {
+  outline: none;
+  border-color: var(--cor-destaque);
+  background-color: #fff;
+}
+
+.card input[readonly] {
+  background-color: #f0f0f0;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.card button {
+  margin-top: 4px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--fundo-botao-padrao);
+  color: #ffffff;
+  font-family: var(--fonte-principal);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  align-self: flex-start;
+}
+
+.card button:hover {
+  background-color: var(--fundo-botao-hover);
+}
+
+.card button:active {
+  transform: scale(0.97);
+}
+
+/* ── Resultado ── */
+.card .resultado {
+  margin-top: 8px;
+}
+
+.card .resultado p {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto-titulo-card);
+  text-align: center;
+}
+
+/* ── Gênero (IMC) ── */
+.genero-grupo {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.genero-opcao {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.genero-opcao label {
+  text-transform: none;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+/* ── Regra de três ── */
+#calculo-tres form p {
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* ── Boas-vindas ── */
 .msg-inicio {
   display: flex;
   flex-direction: column;
@@ -176,109 +290,7 @@ footer p {
   text-align: center;
 }
 
-/* Card IMC */
-#calculo-imc {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: 400px;
-  border: none;
-  background-color: var(--fundo-cards);
-  border-radius: 14px;
-  padding: 32px 36px;
-  color: var(--texto-secundario);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.12),
-    0 1px 4px rgba(0, 0, 0, 0.08);
-}
-
-#calculo-imc h1 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--texto-titulo-card);
-  text-align: center;
-  border-bottom: 1px solid var(--borda-divisoria);
-  padding-bottom: 14px;
-}
-
-#calculo-imc form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-#calculo-imc label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #555;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.genero-grupo {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-.genero-opcao {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.genero-opcao label {
-  text-transform: none;
-  font-size: 13px;
-  letter-spacing: 0;
-}
-
-#calculo-imc input[type="number"] {
-  padding: 9px 12px;
-  border-radius: 8px;
-  border: 1.5px solid #ddd;
-  background-color: #fafafa;
-  color: #333;
-  font-family: var(--fonte-principal);
-  font-size: 14px;
-  transition: border-color 0.2s;
-}
-
-#calculo-imc input[type="number"]:focus {
-  outline: none;
-  border-color: var(--cor-destaque);
-  background-color: #fff;
-}
-
-#calculo-imc .resultado {
-  margin-top: 8px;
-}
-
-#calculo-imc button {
-  margin-top: 4px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  background-color: var(--fundo-botao-padrao);
-  color: #ffffff;
-  font-family: var(--fonte-principal);
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease,
-    transform 0.1s ease;
-  align-self: flex-start;
-}
-
-#calculo-imc button:hover {
-  background-color: var(--fundo-botao-hover);
-}
-
-#calculo-imc button:active {
-  transform: scale(0.97);
-}
-
+/* ── Utilitário ── */
 .escondido {
   display: none !important;
 }

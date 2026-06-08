@@ -21,17 +21,30 @@
         <a class="btn" href="#calculo-tres" id="tres">Regra de três</a>
       </aside>
       <main>
+
+        <!-- Boas-vindas -->
         <div class="msg-inicio">
           <h1>Bem-Vindo</h1>
           <p>Selecione uma opção no menu lateral.</p>
         </div>
 
+        <!-- Cotação de Moedas -->
         <section class="card escondido" id="cotacao-moedas">
           <h1>Cotação de Moedas</h1>
+          <form>
+            <label for="valor-cotacao">Valor em Dólares (USD)</label>
+            <input type="number" id="valor-cotacao" placeholder="Ex: 100" step="0.01" />
+            <button id="buttonCotacao" type="button">Converter para R$</button>
+          </form>
+          <div class="resultado">
+            <p id="resultado-cotacao"></p>
+          </div>
         </section>
+
+        <!-- Calcular IMC -->
         <section class="card escondido" id="calculo-imc">
           <h1>Calcular IMC</h1>
-          <form action="" id="form">
+          <form id="form">
             <div class="genero-grupo">
               <div class="genero-opcao">
                 <input class="genero" type="radio" id="masculino" value="masculino" name="genero" checked />
@@ -42,13 +55,10 @@
                 <label for="feminino">Feminino</label>
               </div>
             </div>
-
             <label for="altura">Altura (m)</label>
             <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01" />
-
             <label for="peso">Peso (kg)</label>
             <input type="number" id="peso" placeholder="Ex: 70" />
-
             <button id="buttonIMC" type="button">Calcular</button>
           </form>
           <div class="resultado">
@@ -56,18 +66,82 @@
             <p id="tipoImc"></p>
           </div>
         </section>
+
+        <!-- Conversor de Temperatura -->
         <section class="card escondido" id="conversor-temperatura">
           <h1>Conversor de Temperatura</h1>
+          <form>
+            <label for="celsius">Celsius (°C)</label>
+            <input type="number" id="celsius" placeholder="Ex: 100" />
+            <button id="btnCelsiusParaFahrenheit" type="button">Converter para °F</button>
+
+            <label for="fahrenheit">Fahrenheit (°F)</label>
+            <input type="number" id="fahrenheit" placeholder="Ex: 212" />
+            <button id="btnFahrenheitParaCelsius" type="button">Converter para °C</button>
+          </form>
+          <div class="resultado">
+            <p id="resultado-temperatura"></p>
+          </div>
         </section>
+
+        <!-- Conversor de Velocidade -->
         <section class="card escondido" id="conversor-velocidade">
           <h1>Conversor de Velocidade</h1>
+          <form>
+            <label for="kmh">Quilômetros por hora (Km/h)</label>
+            <input type="number" id="kmh" placeholder="Ex: 100" />
+            <button id="btnKmhParaMph" type="button">Converter para Mph</button>
+
+            <label for="mph">Milhas por hora (Mph)</label>
+            <input type="number" id="mph" placeholder="Ex: 62" />
+            <button id="btnMphParaKmh" type="button">Converter para Km/h</button>
+          </form>
+          <div class="resultado">
+            <p id="resultado-velocidade"></p>
+          </div>
         </section>
+
+        <!-- Conversor de Massa -->
         <section class="card escondido" id="conversor-massa">
           <h1>Conversor de Massa</h1>
+          <form>
+            <label for="kg">Quilogramas (Kg)</label>
+            <input type="number" id="kg" placeholder="Ex: 70" />
+            <button id="btnKgParaLb" type="button">Converter para Lb</button>
+
+            <label for="lb">Libras (Lb)</label>
+            <input type="number" id="lb" placeholder="Ex: 154" />
+            <button id="btnLbParaKg" type="button">Converter para Kg</button>
+          </form>
+          <div class="resultado">
+            <p id="resultado-massa"></p>
+          </div>
         </section>
+
+        <!-- Regra de Três -->
         <section class="card escondido" id="calculo-tres">
           <h1>Regra de Três</h1>
+          <form>
+            <p>A está para B, assim como C está para X</p>
+            <label for="valor-a">A</label>
+            <input type="number" id="valor-a" placeholder="Ex: 10" />
+
+            <label for="valor-b">B</label>
+            <input type="number" id="valor-b" placeholder="Ex: 20" />
+
+            <label for="valor-c">C</label>
+            <input type="number" id="valor-c" placeholder="Ex: 5" />
+
+            <label for="valor-x">X (resultado)</label>
+            <input type="number" id="valor-x" placeholder="Resultado" readonly />
+
+            <button id="buttonRegra" type="button">Calcular</button>
+          </form>
+          <div class="resultado">
+            <p id="resultado-regra"></p>
+          </div>
         </section>
+
       </main>
     </div>
     <footer>

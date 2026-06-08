@@ -22,7 +22,10 @@ const elemento = {
   btnCalcularImc: document.querySelector("#buttonIMC"),
   resultadoImc: document.querySelector("#imc"),
   resultadoTipo: document.querySelector("#tipoImc"),
+
 };
+
+//  Navegar 
 
 function mostrarTela(telaAtiva) {
   const todasTelas = [
@@ -71,6 +74,8 @@ function iniciarNavegacao() {
   });
 }
 
+// IMC 
+
 function calcularImc() {
   const altura = parseFloat(elemento.inputAltura.value);
   const peso = parseFloat(elemento.inputPeso.value);
@@ -107,6 +112,5 @@ function calcularImc() {
 function iniciarImc() {
   elemento.btnCalcularImc.addEventListener("click", calcularImc);
 }
-
-iniciarNavegacao();
-iniciarImc();
+iniciarNavegacao()
+iniciarImc()
