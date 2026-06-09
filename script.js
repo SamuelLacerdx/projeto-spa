@@ -196,22 +196,12 @@ function iniciarTemperatura() {
 function kmhParaMs() {
   const kmh = parseFloat(elemento.inputKmh.value);
 
-  if (isNaN(kmh) || kmh < 0) {
-    elemento.resultadoVelocidade.textContent = "Preencha o campo de Km/h.";
-    return;
-  }
-
   const ms = kmh / 3.6;
   elemento.resultadoVelocidade.textContent = `${kmh} Km/h = ${ms.toFixed(2)} m/s`;
 }
 
 function msParaKmh() {
   const ms = parseFloat(elemento.inputMs.value);
-
-  if (isNaN(ms) || ms < 0) {
-    elemento.resultadoVelocidade.textContent = "Preencha o campo de m/s.";
-    return;
-  }
 
   const kmh = ms * 3.6;
   elemento.resultadoVelocidade.textContent = `${ms} m/s = ${kmh.toFixed(2)} Km/h`;
