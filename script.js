@@ -34,12 +34,12 @@ const elemento = {
   btnCelsiusParaFahrenheit: document.querySelector("#btnCelsiusParaFahrenheit"),
   btnFahrenheitParaCelsius: document.querySelector("#btnFahrenheitParaCelsius"),
   resultadoTemperatura: document.querySelector("#resultado-temperatura"),
-
+  
   // Velocidade
   inputKmh: document.querySelector("#kmh"),
-  inputMs: document.querySelector("#ms"),
-  btnKmhParaMs: document.querySelector("#btnKmhParaMs"),
-  btnMsParaKmh: document.querySelector("#btnMsParaKmh"),
+  inputMph: document.querySelector("#mph"),
+  btnKmhParaMph: document.querySelector("#btnKmhParaMph"),
+  btnMphParaKmh: document.querySelector("#btnMphParaKmh"),
   resultadoVelocidade: document.querySelector("#resultado-velocidade"),
 };
 
@@ -193,23 +193,24 @@ function iniciarTemperatura() {
   );
 }
 
-function kmhParaMs() {
+// Velocidade
+function kmhParaMph() {
   const kmh = parseFloat(elemento.inputKmh.value);
 
-  const ms = kmh / 3.6;
-  elemento.resultadoVelocidade.textContent = `${kmh} Km/h = ${ms.toFixed(2)} m/s`;
+  const mph = kmh * 0.621371;
+  elemento.resultadoVelocidade.textContent = `${kmh} Km/h = ${mph.toFixed(2)} Mph`;
 }
 
-function msParaKmh() {
-  const ms = parseFloat(elemento.inputMs.value);
+function mphParaKmh() {
+  const mph = parseFloat(elemento.inputMph.value);
 
-  const kmh = ms * 3.6;
-  elemento.resultadoVelocidade.textContent = `${ms} m/s = ${kmh.toFixed(2)} Km/h`;
+  const kmh = mph / 0.621371;
+  elemento.resultadoVelocidade.textContent = `${mph} Mph = ${kmh.toFixed(2)} Km/h`;
 }
 
 function iniciarVelocidade() {
-  elemento.btnKmhParaMs.addEventListener("click", kmhParaMs);
-  elemento.btnMsParaKmh.addEventListener("click", msParaKmh);
+  elemento.btnKmhParaMph.addEventListener("click", kmhParaMph);
+  elemento.btnMphParaKmh.addEventListener("click", mphParaKmh);
 }
 
 iniciarNavegacao();
