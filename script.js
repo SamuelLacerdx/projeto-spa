@@ -23,6 +23,11 @@ const elemento = {
   resultadoImc: document.querySelector("#imc"),
   resultadoTipo: document.querySelector("#tipoImc"),
 
+  // Cotação
+  inputValorCotacao: document.querySelector("#valor-cotacao"),
+  btnBuscarCotacao: document.querySelector("#buttonCotacao"),
+  resultadoCotacao: document.querySelector("#resultado-cotacao"),
+
 };
 
 //  Navegar 
@@ -117,5 +122,34 @@ function calcularImc() {
 function iniciarImc() {
   elemento.btnCalcularImc.addEventListener("click", calcularImc);
 }
+
+// Cotação
+async function buscarCotacao() {
+  const valor = parseFloat(elemento.inputValorCotacao.value);
+
+  if (isNaN(valor) || valor <= 0) {
+    elemento.resultadoCotacao.textContent = "Digite um valor válido em dólares.";
+    return;
+  }
+
+  elemento.resultadoCotacao.textContent = "Buscando cotação...";
+
+  try {
+    const resposta = await fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL");
+    const dados = await resposta.json();
+    const cotacao = parseFloat(dados.USDBRL.bid);
+    const total = valor * cotacao;
+
+    elemento.resultadoCotacao.textContent = `$ ${valor.toFixed(2)} = R$ ${total.toFixed(2)} (cotação: R$ ${cotacao.toFixed(2)})`;
+  } catch (erro) {
+    elemento.resultadoCotacao.textContent = "Erro ao buscar cotação. Tente novamente.";
+  }
+}
+
+function iniciarCotacao() {
+  elemento.btnBuscarCotacao.addEventListener("click", buscarCotacao);
+}
+
 iniciarNavegacao()
 iniciarImc()
+iniciarCotacao()
