@@ -41,6 +41,13 @@ const elemento = {
   btnKmhParaMph: document.querySelector("#btnKmhParaMph"),
   btnMphParaKmh: document.querySelector("#btnMphParaKmh"),
   resultadoVelocidade: document.querySelector("#resultado-velocidade"),
+
+    // Massa
+  inputKg: document.querySelector("#kg"),
+  inputLb: document.querySelector("#lb"),
+  btnKgParaLb: document.querySelector("#btnKgParaLb"),
+  btnLbParaKg: document.querySelector("#btnLbParaKg"),
+  resultadoMassa: document.querySelector("#resultado-massa"),
 };
 
 //  Navegar
@@ -100,8 +107,8 @@ function calcularImc() {
   const genero = document.querySelector(".genero:checked").value;
 
   if (!altura || !peso || altura <= 0 || peso <= 0) {
-    elemento.resultadoImc.textContent = "Preencha os campos corretamente.";
-    elemento.resultadoTipo.textContent = "";
+    elemento.resultadoImc.innerHTML = "Preencha os campos corretamente.";
+    elemento.resultadoTipo.innerHTML = "";
     return;
   }
 
@@ -128,8 +135,8 @@ function calcularImc() {
     classificacao = "Obesidade grau III";
   }
 
-  elemento.resultadoImc.textContent = `IMC: ${imc.toFixed(2)}`;
-  elemento.resultadoTipo.textContent = `Classificação: ${classificacao}`;
+  elemento.resultadoImc.innerHTML = `IMC: ${imc.toFixed(2)}`;
+  elemento.resultadoTipo.innerHTML = `Classificação: ${classificacao}`;
 }
 
 function iniciarImc() {
@@ -141,12 +148,12 @@ async function buscarCotacao() {
   const valor = parseFloat(elemento.inputValorCotacao.value);
 
   if (isNaN(valor) || valor <= 0) {
-    elemento.resultadoCotacao.textContent =
+    elemento.resultadoCotacao.innerHTML =
       "Digite um valor válido em dólares.";
     return;
   }
 
-  elemento.resultadoCotacao.textContent = "Buscando cotação...";
+  elemento.resultadoCotacao.innerHTML = "Buscando cotação...";
 
   try {
     const resposta = await fetch(
@@ -156,9 +163,9 @@ async function buscarCotacao() {
     const cotacao = parseFloat(dados.USDBRL.bid);
     const total = valor * cotacao;
 
-    elemento.resultadoCotacao.textContent = `$ ${valor.toFixed(2)} = R$ ${total.toFixed(2)} (cotação: R$ ${cotacao.toFixed(2)})`;
+    elemento.resultadoCotacao.innerHTML = `$ ${valor.toFixed(2)} = R$ ${total.toFixed(2)} (cotação: R$ ${cotacao.toFixed(2)})`;
   } catch (erro) {
-    elemento.resultadoCotacao.textContent =
+    elemento.resultadoCotacao.innerHTML =
       "Erro ao buscar cotação. Tente novamente.";
   }
 }
@@ -172,14 +179,14 @@ function celsiusParaFahrenheit() {
   const celsius = parseFloat(elemento.inputCelsius.value);
 
   const fahrenheit = (celsius * 9) / 5 + 32;
-  elemento.resultadoTemperatura.textContent = `${celsius}°C = ${fahrenheit.toFixed(2)}°F`;
+  elemento.resultadoTemperatura.innerHTML = `${celsius}°C = ${fahrenheit.toFixed(2)}°F`;
 }
 
 function fahrenheitParaCelsius() {
   const fahrenheit = parseFloat(elemento.inputFahrenheit.value);
 
   const celsius = ((fahrenheit - 32) * 5) / 9;
-  elemento.resultadoTemperatura.textContent = `${fahrenheit}°F = ${celsius.toFixed(2)}°C`;
+  elemento.resultadoTemperatura.innerHTML = `${fahrenheit}°F = ${celsius.toFixed(2)}°C`;
 }
 
 function iniciarTemperatura() {
@@ -198,20 +205,23 @@ function kmhParaMph() {
   const kmh = parseFloat(elemento.inputKmh.value);
 
   const mph = kmh * 0.621371;
-  elemento.resultadoVelocidade.textContent = `${kmh} Km/h = ${mph.toFixed(2)} Mph`;
+  elemento.resultadoVelocidade.innerHTML = `${kmh} Km/h = ${mph.toFixed(2)} Mph`;
 }
 
 function mphParaKmh() {
   const mph = parseFloat(elemento.inputMph.value);
 
   const kmh = mph / 0.621371;
-  elemento.resultadoVelocidade.textContent = `${mph} Mph = ${kmh.toFixed(2)} Km/h`;
+  elemento.resultadoVelocidade.innerHTML = `${mph} Mph = ${kmh.toFixed(2)} Km/h`;
 }
 
 function iniciarVelocidade() {
   elemento.btnKmhParaMph.addEventListener("click", kmhParaMph);
   elemento.btnMphParaKmh.addEventListener("click", mphParaKmh);
 }
+
+// Massa
+fun
 
 iniciarNavegacao();
 iniciarImc();
