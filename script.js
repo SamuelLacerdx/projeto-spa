@@ -28,9 +28,15 @@ const elemento = {
   btnBuscarCotacao: document.querySelector("#buttonCotacao"),
   resultadoCotacao: document.querySelector("#resultado-cotacao"),
 
+  // Temperatura
+  inputCelsius: document.querySelector("#celsius"),
+  inputFahrenheit: document.querySelector("#fahrenheit"),
+  btnCelsiusParaFahrenheit: document.querySelector("#btnCelsiusParaFahrenheit"),
+  btnFahrenheitParaCelsius: document.querySelector("#btnFahrenheitParaCelsius"),
+  resultadoTemperatura: document.querySelector("#resultado-temperatura"),
 };
 
-//  Navegar 
+//  Navegar
 
 function mostrarTela(telaAtiva) {
   const todasTelas = [
@@ -79,7 +85,7 @@ function iniciarNavegacao() {
   });
 }
 
-// IMC 
+// IMC
 
 function calcularImc() {
   let altura = parseFloat(elemento.inputAltura.value);
@@ -128,21 +134,25 @@ async function buscarCotacao() {
   const valor = parseFloat(elemento.inputValorCotacao.value);
 
   if (isNaN(valor) || valor <= 0) {
-    elemento.resultadoCotacao.textContent = "Digite um valor válido em dólares.";
+    elemento.resultadoCotacao.textContent =
+      "Digite um valor válido em dólares.";
     return;
   }
 
   elemento.resultadoCotacao.textContent = "Buscando cotação...";
 
   try {
-    const resposta = await fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL");
+    const resposta = await fetch(
+      "https://economia.awesomeapi.com.br/json/last/USD-BRL",
+    );
     const dados = await resposta.json();
     const cotacao = parseFloat(dados.USDBRL.bid);
     const total = valor * cotacao;
 
     elemento.resultadoCotacao.textContent = `$ ${valor.toFixed(2)} = R$ ${total.toFixed(2)} (cotação: R$ ${cotacao.toFixed(2)})`;
   } catch (erro) {
-    elemento.resultadoCotacao.textContent = "Erro ao buscar cotação. Tente novamente.";
+    elemento.resultadoCotacao.textContent =
+      "Erro ao buscar cotação. Tente novamente.";
   }
 }
 
@@ -150,6 +160,27 @@ function iniciarCotacao() {
   elemento.btnBuscarCotacao.addEventListener("click", buscarCotacao);
 }
 
-iniciarNavegacao()
-iniciarImc()
-iniciarCotacao()
+// Temperatura
+function celsiusParaFahrenheit() {
+  const celsius = parseFloat(elemento.inputCelsius.value);
+
+  const fahrenheit = (celsius * 9) / 5 + 32;
+  elemento.resultadoTemperatura.textContent = `${celsius}°C = ${fahrenheit.toFixed(2)}°F`;
+}
+
+function fahrenheitParaCelsius() {
+  const fahrenheit = parseFloat(elemento.inputFahrenheit.value);
+
+  const celsius = ((fahrenheit - 32) * 5) / 9;
+  elemento.resultadoTemperatura.textContent = `${fahrenheit}°F = ${celsius.toFixed(2)}°C`;
+}
+
+function iniciarTemperatura() {
+  elemento.btnCelsiusParaFahrenheit.addEventListener("click", celsiusParaFahrenheit);
+  elemento.btnFahrenheitParaCelsius.addEventListener("click", fahrenheitParaCelsius);
+}
+
+iniciarNavegacao();
+iniciarImc();
+iniciarCotacao();
+iniciarTemperatura()
