@@ -34,6 +34,13 @@ const elemento = {
   btnCelsiusParaFahrenheit: document.querySelector("#btnCelsiusParaFahrenheit"),
   btnFahrenheitParaCelsius: document.querySelector("#btnFahrenheitParaCelsius"),
   resultadoTemperatura: document.querySelector("#resultado-temperatura"),
+
+  // Velocidade
+  inputKmh: document.querySelector("#kmh"),
+  inputMs: document.querySelector("#ms"),
+  btnKmhParaMs: document.querySelector("#btnKmhParaMs"),
+  btnMsParaKmh: document.querySelector("#btnMsParaKmh"),
+  resultadoVelocidade: document.querySelector("#resultado-velocidade"),
 };
 
 //  Navegar
@@ -176,11 +183,47 @@ function fahrenheitParaCelsius() {
 }
 
 function iniciarTemperatura() {
-  elemento.btnCelsiusParaFahrenheit.addEventListener("click", celsiusParaFahrenheit);
-  elemento.btnFahrenheitParaCelsius.addEventListener("click", fahrenheitParaCelsius);
+  elemento.btnCelsiusParaFahrenheit.addEventListener(
+    "click",
+    celsiusParaFahrenheit,
+  );
+  elemento.btnFahrenheitParaCelsius.addEventListener(
+    "click",
+    fahrenheitParaCelsius,
+  );
+}
+
+function kmhParaMs() {
+  const kmh = parseFloat(elemento.inputKmh.value);
+
+  if (isNaN(kmh) || kmh < 0) {
+    elemento.resultadoVelocidade.textContent = "Preencha o campo de Km/h.";
+    return;
+  }
+
+  const ms = kmh / 3.6;
+  elemento.resultadoVelocidade.textContent = `${kmh} Km/h = ${ms.toFixed(2)} m/s`;
+}
+
+function msParaKmh() {
+  const ms = parseFloat(elemento.inputMs.value);
+
+  if (isNaN(ms) || ms < 0) {
+    elemento.resultadoVelocidade.textContent = "Preencha o campo de m/s.";
+    return;
+  }
+
+  const kmh = ms * 3.6;
+  elemento.resultadoVelocidade.textContent = `${ms} m/s = ${kmh.toFixed(2)} Km/h`;
+}
+
+function iniciarVelocidade() {
+  elemento.btnKmhParaMs.addEventListener("click", kmhParaMs);
+  elemento.btnMsParaKmh.addEventListener("click", msParaKmh);
 }
 
 iniciarNavegacao();
 iniciarImc();
 iniciarCotacao();
-iniciarTemperatura()
+iniciarTemperatura();
+iniciarVelocidade();

@@ -15,13 +15,16 @@
       <aside id="pai-buttons">
         <a class="btn" href="#cotacao-moedas" id="cotacao">Cotação</a>
         <a class="btn" href="#calculo-imc" id="Imc">Calcular IMC</a>
-        <a class="btn" href="#conversor-temperatura" id="temperatura">Conversor temp</a>
-        <a class="btn" href="#conversor-velocidade" id="velocidade">Conversor vel</a>
+        <a class="btn" href="#conversor-temperatura" id="temperatura"
+          >Conversor temp</a
+        >
+        <a class="btn" href="#conversor-velocidade" id="velocidade"
+          >Conversor vel</a
+        >
         <a class="btn" href="#conversor-massa" id="massa">Conversor massa</a>
         <a class="btn" href="#calculo-tres" id="tres">Regra de três</a>
       </aside>
       <main>
-
         <!-- Boas-vindas -->
         <div class="msg-inicio">
           <h1>Bem-Vindo</h1>
@@ -33,7 +36,12 @@
           <h1>Cotação de Moedas</h1>
           <form>
             <label for="valor-cotacao">Valor em Dólares (USD)</label>
-            <input type="number" id="valor-cotacao" placeholder="Ex: 100" step="0.01" />
+            <input
+              type="number"
+              id="valor-cotacao"
+              placeholder="Ex: 100"
+              step="0.01"
+            />
             <button id="buttonCotacao" type="button">Converter para R$</button>
           </form>
           <div class="resultado">
@@ -47,16 +55,34 @@
           <form id="form">
             <div class="genero-grupo">
               <div class="genero-opcao">
-                <input class="genero" type="radio" id="masculino" value="masculino" name="genero" checked />
+                <input
+                  class="genero"
+                  type="radio"
+                  id="masculino"
+                  value="masculino"
+                  name="genero"
+                  checked
+                />
                 <label for="masculino">Masculino</label>
               </div>
               <div class="genero-opcao">
-                <input class="genero" type="radio" id="feminino" value="feminino" name="genero" />
+                <input
+                  class="genero"
+                  type="radio"
+                  id="feminino"
+                  value="feminino"
+                  name="genero"
+                />
                 <label for="feminino">Feminino</label>
               </div>
             </div>
             <label for="altura">Altura (m)</label>
-            <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01" />
+            <input
+              type="number"
+              id="altura"
+              placeholder="Ex: 1.75"
+              step="0.01"
+            />
             <label for="peso">Peso (kg)</label>
             <input type="number" id="peso" placeholder="Ex: 70" />
             <button id="buttonIMC" type="button">Calcular</button>
@@ -73,11 +99,15 @@
           <form>
             <label for="celsius">Celsius (°C)</label>
             <input type="number" id="celsius" placeholder="Ex: 100" />
-            <button id="btnCelsiusParaFahrenheit" type="button">Converter para °F</button>
+            <button id="btnCelsiusParaFahrenheit" type="button">
+              Converter para °F
+            </button>
 
             <label for="fahrenheit">Fahrenheit (°F)</label>
             <input type="number" id="fahrenheit" placeholder="Ex: 212" />
-            <button id="btnFahrenheitParaCelsius" type="button">Converter para °C</button>
+            <button id="btnFahrenheitParaCelsius" type="button">
+              Converter para °C
+            </button>
           </form>
           <div class="resultado">
             <p id="resultado-temperatura"></p>
@@ -90,11 +120,11 @@
           <form>
             <label for="kmh">Quilômetros por hora (Km/h)</label>
             <input type="number" id="kmh" placeholder="Ex: 100" />
-            <button id="btnKmhParaMph" type="button">Converter para Mph</button>
+            <button id="btnKmhParaMs" type="button">Converter para m/s</button>
 
-            <label for="mph">Milhas por hora (Mph)</label>
-            <input type="number" id="mph" placeholder="Ex: 62" />
-            <button id="btnMphParaKmh" type="button">Converter para Km/h</button>
+            <label for="ms">Metro por Segundo (m/s)</label>
+            <input type="number" id="ms" placeholder="Ex: 27" />
+            <button id="btnMsParaKmh" type="button">Converter para Km/h</button>
           </form>
           <div class="resultado">
             <p id="resultado-velocidade"></p>
@@ -133,7 +163,12 @@
             <input type="number" id="valor-c" placeholder="Ex: 5" />
 
             <label for="valor-x">X (resultado)</label>
-            <input type="number" id="valor-x" placeholder="Resultado" readonly />
+            <input
+              type="number"
+              id="valor-x"
+              placeholder="Resultado"
+              readonly
+            />
 
             <button id="buttonRegra" type="button">Calcular</button>
           </form>
@@ -141,7 +176,6 @@
             <p id="resultado-regra"></p>
           </div>
         </section>
-
       </main>
     </div>
     <footer>
