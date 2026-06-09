@@ -221,10 +221,38 @@ function iniciarVelocidade() {
 }
 
 // Massa
-fun
+function kgParaLb() {
+  const kg = parseFloat(elemento.inputKg.value);
+
+  if (isNaN(kg) || kg < 0) {
+    elemento.resultadoMassa.textContent = "Preencha o campo de Quilogramas.";
+    return;
+  }
+
+  const lb = kg * 2.20462;
+  elemento.resultadoMassa.textContent = `${kg} Kg = ${lb.toFixed(2)} Lb`;
+}
+
+function lbParaKg() {
+  const lb = parseFloat(elemento.inputLb.value);
+
+  if (isNaN(lb) || lb < 0) {
+    elemento.resultadoMassa.textContent = "Preencha o campo de Libras.";
+    return;
+  }
+
+  const kg = lb / 2.20462;
+  elemento.resultadoMassa.textContent = `${lb} Lb = ${kg.toFixed(2)} Kg`;
+}
+
+function iniciarMassa() {
+  elemento.btnKgParaLb.addEventListener("click", kgParaLb);
+  elemento.btnLbParaKg.addEventListener("click", lbParaKg);
+}
 
 iniciarNavegacao();
 iniciarImc();
 iniciarCotacao();
 iniciarTemperatura();
 iniciarVelocidade();
+iniciarMassa();
