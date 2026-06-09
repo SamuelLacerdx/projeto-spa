@@ -24,8 +24,10 @@ const elemento = {
   resultadoTipo: document.querySelector("#tipoImc"),
 
   // Cotação
-  inputValorCotacao: document.querySelector("#valor-cotacao"),
-  btnBuscarCotacao: document.querySelector("#buttonCotacao"),
+  inputValorUsd: document.querySelector("#valor-usd"),
+  inputValorBrl: document.querySelector("#valor-brl"),
+  btnUsdParaBrl: document.querySelector("#buttonUsdParaBrl"),
+  btnBrlParaUsd: document.querySelector("#buttonBrlParaUsd"),
   resultadoCotacao: document.querySelector("#resultado-cotacao"),
 
   // Temperatura
@@ -115,13 +117,15 @@ function calcularImc() {
   const genero = document.querySelector(".genero:checked").value;
 
   if (altura == 0) {
-    elemento.resultadoImc.innerHTML = "Preencha os campos de altura corretamente.";
+    elemento.resultadoImc.innerHTML =
+      "Preencha os campos de altura corretamente.";
     elemento.resultadoTipo.innerHTML = "";
     return;
   }
 
   if (peso == 0) {
-    elemento.resultadoImc.innerHTML = "Preencha os campos de peso corretamente.";
+    elemento.resultadoImc.innerHTML =
+      "Preencha os campos de peso corretamente.";
     elemento.resultadoTipo.innerHTML = "";
     return;
   }
