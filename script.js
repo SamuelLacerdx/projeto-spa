@@ -232,29 +232,55 @@ function kgParaLb() {
   const kg = parseFloat(elemento.inputKg.value);
 
   if (isNaN(kg) || kg < 0) {
-    elemento.resultadoMassa.textContent = "Preencha o campo de Quilogramas.";
+    elemento.resultadoMassa.innerHTML = "Preencha o campo de Quilogramas.";
     return;
   }
 
   const lb = kg * 2.20462;
-  elemento.resultadoMassa.textContent = `${kg} Kg = ${lb.toFixed(2)} Lb`;
+  elemento.resultadoMassa.innerHTML = `${kg} Kg = ${lb.toFixed(2)} Lb`;
 }
 
 function lbParaKg() {
   const lb = parseFloat(elemento.inputLb.value);
 
   if (isNaN(lb) || lb < 0) {
-    elemento.resultadoMassa.textContent = "Preencha o campo de Libras.";
+    elemento.resultadoMassa.innerHTML = "Preencha o campo de Libras.";
     return;
   }
 
   const kg = lb / 2.20462;
-  elemento.resultadoMassa.textContent = `${lb} Lb = ${kg.toFixed(2)} Kg`;
+  elemento.resultadoMassa.innerHTML = `${lb} Lb = ${kg.toFixed(2)} Kg`;
 }
 
 function iniciarMassa() {
   elemento.btnKgParaLb.addEventListener("click", kgParaLb);
   elemento.btnLbParaKg.addEventListener("click", lbParaKg);
+}
+
+// Regra de Três
+function calcularRegraTres() {
+  const a = parseFloat(elemento.inputA.value);
+  const b = parseFloat(elemento.inputB.value);
+  const c = parseFloat(elemento.inputC.value);
+
+  if (!a || a === 0) {
+    elemento.resultadoRegra.innerHTML = "O valor de A não pode ser zero ou vazio.";
+    elemento.inputX.value = "";
+    return;
+  }
+
+  if (isNaN(b) || isNaN(c)) {
+    elemento.resultadoRegra.innerHTML = "Preencha todos os campos.";
+    elemento.inputX.value = "";
+    return;
+  }
+
+  const x = (b * c) / a;
+  elemento.inputX.value = x.toFixed(2);
+}
+
+function iniciarRegraTres() {
+  elemento.btnCalcularRegra.addEventListener("click", calcularRegraTres);
 }
 
 iniciarNavegacao();
@@ -263,3 +289,4 @@ iniciarCotacao();
 iniciarTemperatura();
 iniciarVelocidade();
 iniciarMassa();
+iniciarRegraTres();
