@@ -34,7 +34,7 @@ const elemento = {
   btnCelsiusParaFahrenheit: document.querySelector("#btnCelsiusParaFahrenheit"),
   btnFahrenheitParaCelsius: document.querySelector("#btnFahrenheitParaCelsius"),
   resultadoTemperatura: document.querySelector("#resultado-temperatura"),
-  
+
   // Velocidade
   inputKmh: document.querySelector("#kmh"),
   inputMph: document.querySelector("#mph"),
@@ -42,12 +42,20 @@ const elemento = {
   btnMphParaKmh: document.querySelector("#btnMphParaKmh"),
   resultadoVelocidade: document.querySelector("#resultado-velocidade"),
 
-    // Massa
+  // Massa
   inputKg: document.querySelector("#kg"),
   inputLb: document.querySelector("#lb"),
   btnKgParaLb: document.querySelector("#btnKgParaLb"),
   btnLbParaKg: document.querySelector("#btnLbParaKg"),
   resultadoMassa: document.querySelector("#resultado-massa"),
+
+  // Regra de Três
+  inputA: document.querySelector("#valor-a"),
+  inputB: document.querySelector("#valor-b"),
+  inputC: document.querySelector("#valor-c"),
+  inputX: document.querySelector("#valor-x"),
+  btnCalcularRegra: document.querySelector("#buttonRegra"),
+  resultadoRegra: document.querySelector("#resultado-regra"),
 };
 
 //  Navegar
@@ -148,8 +156,7 @@ async function buscarCotacao() {
   const valor = parseFloat(elemento.inputValorCotacao.value);
 
   if (isNaN(valor) || valor <= 0) {
-    elemento.resultadoCotacao.innerHTML =
-      "Digite um valor válido em dólares.";
+    elemento.resultadoCotacao.innerHTML = "Digite um valor válido em dólares.";
     return;
   }
 
