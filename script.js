@@ -114,6 +114,18 @@ function calcularImc() {
   const peso = parseFloat(elemento.inputPeso.value);
   const genero = document.querySelector(".genero:checked").value;
 
+  if (altura == 0) {
+    elemento.resultadoImc.innerHTML = "Preencha os campos de altura corretamente.";
+    elemento.resultadoTipo.innerHTML = "";
+    return;
+  }
+
+  if (peso == 0) {
+    elemento.resultadoImc.innerHTML = "Preencha os campos de peso corretamente.";
+    elemento.resultadoTipo.innerHTML = "";
+    return;
+  }
+
   if (!altura || !peso || altura <= 0 || peso <= 0) {
     elemento.resultadoImc.innerHTML = "Preencha os campos corretamente.";
     elemento.resultadoTipo.innerHTML = "";
@@ -264,7 +276,8 @@ function calcularRegraTres() {
   const c = parseFloat(elemento.inputC.value);
 
   if (!a || a === 0) {
-    elemento.resultadoRegra.innerHTML = "O valor de A não pode ser zero ou vazio.";
+    elemento.resultadoRegra.innerHTML =
+      "O valor de A não pode ser zero ou vazio.";
     elemento.inputX.value = "";
     return;
   }
