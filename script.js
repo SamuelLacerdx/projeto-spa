@@ -168,33 +168,51 @@ function iniciarImc() {
 }
 
 // Cotação
-async function buscarCotacao() {
-  const valor = parseFloat(elemento.inputValorCotacao.value);
+async function buscarCotacao(direcao) {
+  const ehUsdParaBrl = direcao === "usd-brl";
+  const valor = parseFloat(
+    ehUsdParaBrl ? elemento.inputValorUsd.value : elemento.inputValorBrl.value,
+  );
 
-  if (isNaN(valor) || valor <= 0) {
+if (isNaN(valor) || valor <= 0) {
+  if (ehUsdParaBrl) {
     elemento.resultadoCotacao.innerHTML = "Digite um valor válido em dólares.";
-    return;
+  } else {
+    elemento.resultadoCotacao.innerHTML = "Digite um valor válido em reais.";
   }
-
+  return;
+}
   elemento.resultadoCotacao.innerHTML = "Buscando cotação...";
 
   try {
     const resposta = await fetch(
       "https://economia.awesomeapi.com.br/json/last/USD-BRL",
     );
-    const dados = await resposta.json();
-    const cotacao = parseFloat(dados.USDBRL.bid);
-    const total = valor * cotacao;
+    const {
+      USDBRL: { bid },
+    } = await resposta.json();
+    const cotacao = parseFloat(bid);
+    const total = ehUsdParaBrl ? valor * cotacao : valor / cotacao;
 
-    elemento.resultadoCotacao.innerHTML = `$ ${valor.toFixed(2)} = R$ ${total.toFixed(2)} (cotação: R$ ${cotacao.toFixed(2)})`;
-  } catch (erro) {
+    elemento.resultadoCotacao.innerHTML = ehUsdParaBrl;
+    if (ehUsdParaBrl) {
+      elemento.resultadoCotacao.innerHTML = `$ ${valor.toFixed(2)} = R$ ${total.toFixed(2)} (cotação: R$ ${cotacao.toFixed(2)})`;
+    } else {
+      elemento.resultadoCotacao.innerHTML = `R$ ${valor.toFixed(2)} = $ ${total.toFixed(2)} (cotação: R$ ${cotacao.toFixed(2)})`;
+    }
+  } catch {
     elemento.resultadoCotacao.innerHTML =
       "Erro ao buscar cotação. Tente novamente.";
   }
 }
 
 function iniciarCotacao() {
-  elemento.btnBuscarCotacao.addEventListener("click", buscarCotacao);
+  elemento.btnUsdParaBrl.addEventListener("click", () =>
+    buscarCotacao("usd-brl"),
+  );
+  elemento.btnBrlParaUsd.addEventListener("click", () =>
+    buscarCotacao("brl-usd"),
+  );
 }
 
 // Temperatura
