@@ -331,7 +331,7 @@ function darkMode() {
       elemento.toggleBtn.style.color = "black";
     } else {
       elemento.toggleBtn.innerText = "🌙 Dark Mode";
-      elemento.toggleBtn.style.backgroundColor = "transparent";
+      elemento.toggleBtn.style.backgroundColor = "black";
       elemento.toggleBtn.style.color = "white";
     }
   });
