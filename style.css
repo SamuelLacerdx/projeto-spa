@@ -42,7 +42,7 @@ header {
   height: 52px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0 16px;
   background-color: var(--fundo-topo-rodape);
   flex-shrink: 0;
@@ -114,7 +114,9 @@ footer p {
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
   display: block;
 }
 
@@ -208,7 +210,9 @@ footer p {
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
   align-self: flex-start;
 }
 
@@ -324,4 +328,10 @@ body.dark .card input[readonly] {
 body.dark .card label,
 body.dark #calculo-tres form p {
   color: #aab;
+}
+
+#toggle-dark {
+  border: solid black 2px;
+  border-radius: 5px;
+  padding: 10px;
 }
