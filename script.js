@@ -58,6 +58,9 @@ const elemento = {
   inputX: document.querySelector("#valor-x"),
   btnCalcularRegra: document.querySelector("#buttonRegra"),
   resultadoRegra: document.querySelector("#resultado-regra"),
+
+  // DarkMode
+  toggleBtn: document.getElementById("toggle-dark"),
 };
 
 //  Navegar
@@ -174,15 +177,15 @@ async function buscarCotacao(direcao) {
     ehUsdParaBrl ? elemento.inputValorUsd.value : elemento.inputValorBrl.value,
   );
 
-if (isNaN(valor) || valor <= 0) {
-  if (ehUsdParaBrl) {
-    elemento.resultadoCotacao.innerHTML = "Digite um valor válido em dólares.";
-  } else {
-    elemento.resultadoCotacao.innerHTML = "Digite um valor válido em reais.";
+  if (isNaN(valor) || valor <= 0) {
+    if (ehUsdParaBrl) {
+      elemento.resultadoCotacao.innerHTML =
+        "Digite um valor válido em dólares.";
+    } else {
+      elemento.resultadoCotacao.innerHTML = "Digite um valor válido em reais.";
+    }
+    return;
   }
-  return;
-}
-  elemento.resultadoCotacao.innerHTML = "Buscando cotação...";
 
   try {
     const resposta = await fetch(
@@ -318,6 +321,22 @@ function iniciarRegraTres() {
   elemento.btnCalcularRegra.addEventListener("click", calcularRegraTres);
 }
 
+// ── Dark Mode ──
+function darkMode() {
+  elemento.toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    if (document.body.classList.contains("dark")) {
+      elemento.toggleBtn.innerText = "☀️ White Mode";
+      elemento.toggleBtn.style.backgroundColor = "white";
+      elemento.toggleBtn.style.color = "black";
+    } else {
+      elemento.toggleBtn.innerText = "🌙 Dark Mode";
+      elemento.toggleBtn.style.backgroundColor = "transparent";
+      elemento.toggleBtn.style.color = "white";
+    }
+  });
+}
+
 iniciarNavegacao();
 iniciarImc();
 iniciarCotacao();
@@ -325,3 +344,4 @@ iniciarTemperatura();
 iniciarVelocidade();
 iniciarMassa();
 iniciarRegraTres();
+darkMode();

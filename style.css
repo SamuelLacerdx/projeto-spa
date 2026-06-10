@@ -294,3 +294,34 @@ footer p {
 .escondido {
   display: none !important;
 }
+
+/* ── Dark Mode ── */
+body.dark {
+  --background-color: #1a1a2e;
+  --fundo-topo-rodape: #16213e;
+  --fundo-barra-lateral: #0f3460;
+  --fundo-cards: #16213e;
+  --texto-secundario: #e0e0e0;
+  --texto-titulo-card: #7b8cde;
+  --fundo-botao-padrao: #3a3fd4;
+  --fundo-botao-hover: #5057e0;
+  --cor-destaque: #7b8cde;
+  --borda-divisoria: #2a3a5c;
+}
+
+body.dark .card input[type="number"],
+body.dark .card input[type="text"] {
+  background-color: #0f3460;
+  border-color: #2a3a5c;
+  color: #e0e0e0;
+}
+
+body.dark .card input[readonly] {
+  background-color: #0a2240;
+  color: #888;
+}
+
+body.dark .card label,
+body.dark #calculo-tres form p {
+  color: #aab;
+}
