@@ -323,7 +323,7 @@ function iniciarRegraTres() {
 
 // ── Dark Mode ──
 function darkMode() {
-  elemento.toggleBtn.addEventListener("click", () => {
+  elemento.toggleBtn.onclick = () => {
     document.body.classList.toggle("dark");
     if (document.body.classList.contains("dark")) {
       elemento.toggleBtn.innerText = "☀️ White Mode";
@@ -334,7 +334,7 @@ function darkMode() {
       elemento.toggleBtn.style.backgroundColor = "black";
       elemento.toggleBtn.style.color = "white";
     }
-  });
+  };
 }
 
 iniciarNavegacao();
